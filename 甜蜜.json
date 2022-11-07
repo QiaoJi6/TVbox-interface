@@ -96,6 +96,15 @@
             "ext": "https://kebedd69.github.io/TVbox-interface/json/nmys.json"
         },
         {
+            "key": "csp_Lgyy",
+            "name": "蓝光影院(SP)",
+            "type": 3,
+            "api": "csp_Lgyy",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
             "key": "饭团",
             "name": "饭团(SP)",
             "api": "csp_Fantuan",
@@ -380,6 +389,83 @@
             "url": "Sequence"
         },
         {
+            "name": "风起清河",
+            "type": 1,
+            "url": "http://www.pandown.pro/app/tkys/tkysjx.php?url=",
+            "ext": {
+                "flag": [
+                    "qq",
+                    "腾讯",
+                    "qiyi",
+                    "爱奇艺",
+                    "奇艺",
+                    "youku",
+                    "优酷",
+                    "sohu",
+                    "搜狐",
+                    "letv",
+                    "乐视",
+                    "mgtv",
+                    "芒果",
+                    "rx",
+                    "ltnb",
+                    "bilibili",
+                    "1905",
+                    "xigua"
+                ]
+            }
+        },
+        {
+            "name": "风起吴郡",
+            "type": 1,
+            "url": "http://pandown.pro/app/kxjx.php?url=",
+            "ext": {
+                "flag": [
+                    "qq",
+                    "腾讯",
+                    "qiyi",
+                    "爱奇艺",
+                    "奇艺",
+                    "youku",
+                    "优酷",
+                    "sohu",
+                    "搜狐",
+                    "letv",
+                    "乐视",
+                    "mgtv",
+                    "芒果",
+                    "CL4K",
+                    "renrenmi",
+                    "ltnb",
+                    "bilibili",
+                    "1905",
+                    "xigua"
+                ]
+            }
+        },
+        {
+            "name": "风起陈留",
+            "type": 1,
+            "url": "http://pandown.pro/app/ysmjx.php?url=",
+            "ext": {
+                "flag": [
+                    "qq",
+                    "qiyi",
+                    "mgtv",
+                    "youku",
+                    "letv",
+                    "sohu",
+                    "xigua",
+                    "1905",
+                    "优播线路",
+                    "腾播线路"
+                ],
+                "header": {
+                    "User-Agent": "Dart/2.14 (dart:io)"
+                }
+            }
+        },
+        {
             "name": "风起陇西1",
             "type": 0,
             "url": "https://hxys.tv/bfq/?url="
@@ -420,9 +506,9 @@
             "url": "http://chaloli.cn/home/api?type=ys&uid=1942949&key=klmnqADJQRUV024678&url="
         },
         {
-            "name": "风起吴郡",
+            "name": "风起朔方",
             "type": 1,
-            "url": "https://play.fuqizhishi.com/jx/API.php?appkey=iiiixiaobai&url="
+            "url": "https://play.fuqizhishi.com/jx2/API.php?appkey=iiiixiaobai&url="
         },
         {
             "name": "风起零陵",
