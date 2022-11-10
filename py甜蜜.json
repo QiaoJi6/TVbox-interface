@@ -20,16 +20,6 @@
             "filterable": 1,
             "ext": "https://kebedd69.github.io/TVbox-interface/py/py_bilivd.py"
         },
- /*       {
-            "key": "py_douban.py",
-            "name": "豆瓣推荐",
-            "type": 3,
-            "api": "py_douban.py",
-            "searchable": 0,
-            "quickSearch": 0,
-            "filterable": 1,
-            "ext": "https://kebedd69.github.io/TVbox-interface/py/py_douban.py"
-        },*/
         {
             "key": "py_3qu",
             "name": "3QU",
@@ -512,19 +502,6 @@
             "url": "http://jx.gbxy.net.cn/?url="
         }
     ],
-    "lives": [
-        {
-            "group": "redirect",
-            "channels": [
-                {
-                    "name": "live",
-                    "urls": [
-                        "proxy://do=live&type=txt&ext=aHR0cHM6Ly9kcnB5LmtlYmVkZDY5LnJlcGwuY28vbGl2ZXM="
-                    ]
-                }
-            ]
-        }
-    ],
     "flags": [
         "youku",
         "qq",
@@ -804,6 +781,19 @@
         "qiu.xixiqiu.com",
         "cdnjs.hnfenxun.com",
         "cms.qdwght.com"
+    ],
+    "lives": [
+        {
+            "group": "redirect",
+            "channels": [
+                {
+                    "name": "live",
+                    "urls": [
+                        "proxy://do=live&type=txt&ext=aHR0cDovL3pkaXIua2ViZWRkNjkucmVwbC5jby9wdWJsaWMvbGl2ZS50eHQ="
+                    ]
+                }
+            ]
+        }
     ],
     "wallpaper": "http://www.kf666888.cn/api/tvbox/img",
     "spider": "https://kebedd69.github.io/TVbox-interface/jar/甜蜜11031.jar;md5;ca07e741640debc3777bb9a227cfb884"
