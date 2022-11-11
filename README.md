@@ -1,8 +1,8 @@
-# TVBox
+# 配置地址
 
-配置地址:https://kebedd69.github.io/TVbox-interface/甜蜜.json
+非py版:https://kebedd69.github.io/TVbox-interface/甜蜜.json
 
-py版:https://kebedd69.github.io/TVbox-interface/py甜蜜.json
+py版(需本地存储权限):https://kebedd69.github.io/TVbox-interface/py甜蜜.json
 
 
 # TVBox
