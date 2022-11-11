@@ -4,12 +4,15 @@
 
 py版(需本地存储权限):https://kebedd69.github.io/TVbox-interface/py甜蜜.json
 
+订阅管理:https://kebedd69.github.io
 
 # TVBox
 
 - [使用方法](./usage.md)
 
 ### TVBox资源接口外链托管网址：感觉哪个好用用哪个，能不能用，好不要用，有没有坑，自己测试。网上的东西，只是收集，不做测试推荐。
+
+0、https://www.gitlink.org.cn
 
 1、https://gitea.com/  已开始限制，清理
 
