@@ -21,6 +21,16 @@
             "ext": "https://kebedd69.github.io/TVbox-interface/py/py_bilivd.py"
         },
         {
+            "key": "py_bilibili2",
+            "name": "B站2",
+            "type": 3,
+            "api": "py_bilibili2",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1,
+            "ext": "https://kebedd69.github.io/TVbox-interface/py/py_bilibili2.py"
+        },
+        {
             "key": "py_3qu",
             "name": "3QU",
             "type": 3,
