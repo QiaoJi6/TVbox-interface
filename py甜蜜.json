@@ -25,10 +25,20 @@
             "name": "B站2",
             "type": 3,
             "api": "py_bilibili2",
-            "searchable": 1,
-            "quickSearch": 1,
+            "searchable": 0,
+            "quickSearch": 0,
             "filterable": 1,
             "ext": "https://kebedd69.github.io/TVbox-interface/py/py_bilibili2.py"
+        },
+        {
+            "key": "py_bilibili3",
+            "name": "B站3直播",
+            "type": 3,
+            "api": "py_bilibili3",
+            "searchable": 0,
+            "quickSearch": 0,
+            "filterable": 1,
+            "ext": "https://kebedd69.github.io/TVbox-interface/py/py_bilibili3.py"
         },
         {
             "key": "py_3qu",
