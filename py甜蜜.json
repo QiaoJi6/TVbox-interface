@@ -301,6 +301,16 @@
             "ext": "https://kebedd69.github.io/TVbox-interface/py/py_alist.py"
         },
         {
+            "key": "py_yunso",
+            "name": "up云搜",
+            "type": 3,
+            "api": "py_yunso",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 0,
+            "ext": "https://kebedd69.github.io/TVbox-interface/py/py_yunso.py"
+        },
+        {
             "key": "py_pansou",
             "name": "盘搜",
             "type": 3,
