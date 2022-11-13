@@ -12,13 +12,16 @@ import time
 import base64
 from time import strftime
 from time import gmtime
+import time
+time_stamp = str(int(time.time()))
+
 
 
 
 
 class Spider(Spider):  # 元类 默认的元类 type
     box_video_type = ''
-    vod_area='bilidanmu'
+    vod_area=''
 
     def getName(self):
         return "哔哩3_带直播"
@@ -95,9 +98,13 @@ class Spider(Spider):  # 元类 默认的元类 type
         result = {}
         cateManual = {
             "动态": "动态",
-            "历史记录": '历史记录',
+
             "收藏夹": '收藏夹',
+            "历史记录": '历史记录',
+            "稍后再看": '稍后再看',
+            '生活直播':'生活直播',
             "热门": "热门",
+            
             "排行榜": "排行榜",
             "频道": "频道",
             "直播": "直播",
@@ -138,22 +145,6 @@ class Spider(Spider):  # 元类 默认的元类 type
 
     cookies = ''
 
-    # def getCookie(self):
-    #     # 在cookies_str中填入会员或大会员cookie，以获得更好的体验。
-    #     cookies_str = "buvid3=CFF74DA7-E79E-4B53-BB96-FC74AB8CD2F3184997infoc; LIVE_BUVID=AUTO4216125328906835; rpdid=|(umRum~uY~R0J'uYukYukkkY; balh_is_closed=; balh_server_inner=__custom__; PVID=4; video_page_version=v_old_home; i-wanna-go-back=-1; CURRENT_BLACKGAP=0; blackside_state=0; fingerprint=8965144a609d60190bd051578c610d72; buvid_fp_plain=undefined; CURRENT_QUALITY=120; hit-dyn-v2=1; nostalgia_conf=-1; buvid_fp=CFF74DA7-E79E-4B53-BB96-FC74AB8CD2F3184997infoc; CURRENT_FNVAL=4048; DedeUserID=85342; DedeUserID__ckMd5=f070401c4c699c83; b_ut=5; hit-new-style-dyn=0; buvid4=15C64651-E8B7-100C-4B1F-C7CFD2DB473007906-022110820-jYQRaMeS%2BRXRfw14q70%2FLQ%3D%3D; b_nut=1667910208; b_lsid=3CE4AE79_184578915C0; is-2022-channel=1; innersign=0; SESSDATA=a5e4d58d%2C1683641322%2C2c39a%2Ab1; bili_jct=2f3126b5954e37f593130f2fef082cd8; sid=p7tjqv22; bp_video_offset_85342=726936847258746900"
-    #     cookies_dic = dict([co.strip().split('=') for co in cookies_str.split(';')])
-    #     rsp = session()
-    #    cookies_jar = utils.cookiejar_from_dict(cookies_dic)
-    #     rsp.cookies = cookies_jar
-    #     content = self.fetch("http://api.bilibili.com/x/web-interface/nav", cookies=rsp.cookies)
-    #     res = json.loads(content.text)
-    #     if res["code"] == 0:
-    #         self.cookies = rsp.cookies
-    #     else:
-
-    #         rsp = self.fetch("https://www.bilibili.com/")
-    #         self.cookies = rsp.cookies
-    #     return rsp.cookies
     def getCookie(self):
 
         #在下方cookies_str  后面 双引号里面放置你的cookies
@@ -441,7 +432,7 @@ class Spider(Spider):  # 元类 默认的元类 type
     def get_history(self,pg):
         result = {}
         self.box_video_type = '历史记录'
-        url = 'http://api.bilibili.com/x/v2/history?pn=%s' % pg
+        url = 'http://api.bilibili.com/x/v2/history?pn=%s&t=time_stamp' % pg
         rsp = self.fetch(url,cookies=self.cookies)
         content = rsp.text
         jo = json.loads(content)   #解析api接口,转化成json数据对象
@@ -481,12 +472,57 @@ class Spider(Spider):  # 元类 默认的元类 type
         return result
 
 
-    def get_live(self,pg,parent_area_id):
+    def get_toview(self,pg):
+        result = {}
+        self.box_video_type = '稍后再看'
+        url = 'http://api.bilibili.com/x/v2/history/toview'
+        rsp = self.fetch(url,cookies=self.cookies)
+        content = rsp.text
+        jo = json.loads(content)   #解析api接口,转化成json数据对象
+        if jo['code'] == 0:
+            videos = []
+            vodList = jo['data'].get('list')
+
+            for vod in vodList:
+
+                if vod['duration'] > 0:   #筛选掉非视频的历史记录
+                    aid = str(vod["aid"]).strip()   #获取 aid
+                    #获取标题
+                    title = vod["title"].replace("<em class=\"keyword\">", "").replace("</em>", "").replace("&quot;",
+                                                                                                      '"')
+                    #封面图片
+                    img = vod["pic"].strip()
+
+                    #获取已观看时间
+                    if str(vod['progress'])=='-1':
+                        process=str(self.second_to_time(vod['duration'])).strip()
+                    else:
+                        process = str(self.second_to_time(vod['progress'])).strip()
+                    #获取视频总时长
+                    total_time= str(self.second_to_time(vod['duration'])).strip()
+                    #组合 已观看时间 / 总时长 ,赋值给 remark
+                    remark = process+' / '+total_time
+                    videos.append({
+                        "vod_id":aid+'&toview',
+                        "vod_name": title,
+                        "vod_pic": img,
+                        "vod_remarks": remark
+
+                    })
+            result['list'] = videos
+            result['page'] = pg
+            result['pagecount'] = 9999
+            result['limit'] = 90
+            result['total'] = 999999
+        return result
+
+
+    def get_live(self,pg,parent_area_id,area_id):
         result = {}
         self.box_video_type = '直播'
 
 
-        url = 'https://api.live.bilibili.com/room/v3/area/getRoomList?page=%s&sort_type=online&parent_area_id=%s'%(pg,parent_area_id)
+        url = 'https://api.live.bilibili.com/xlive/web-interface/v1/second/getList?platform=web&parent_area_id=%s&area_id=%s&sort_type=online&page=%s'%(parent_area_id,area_id,pg)
         rsp = self.fetch(url, cookies=self.cookies)
 
         content = rsp.text
@@ -538,6 +574,10 @@ class Spider(Spider):  # 元类 默认的元类 type
         elif tid == "排行榜":
             self.box_video_type = '排行榜'
             return self.get_rank()
+        elif tid== '稍后再看':
+            self.box_video_type = '稍后再看'
+            return self.get_toview(pg)
+
         elif tid == "收藏夹":
             self.box_video_type = '收藏夹'
             order = 'mtime'
@@ -545,15 +585,27 @@ class Spider(Spider):  # 元类 默认的元类 type
                 order = extend['order']
 
             return self.get_fav(pg=pg, order=order,extend=extend)
+            
+            
+        elif tid == '生活直播':
+            self.box_video_type = '直播'
+            parent_area_id = '10'
+            area_id=''
+            if 'area_id' in extend:
+                area_id = extend['area_id']
+            return  self.get_live(pg=pg,parent_area_id=parent_area_id,area_id=area_id)
 
         elif tid == '直播':
             self.box_video_type = '直播'
-            parent_area_id = '0'
+            parent_area_id = '1'
             if 'parent_area_id' in extend:
                 parent_area_id = extend['parent_area_id']
-            return  self.get_live(pg=pg,parent_area_id=parent_area_id)
+            return  self.get_live(pg=pg,parent_area_id=parent_area_id,area_id='')
 
-
+        
+        
+        
+        
 
         elif tid == '频道':
             self.box_video_type = '频道'
@@ -781,7 +833,8 @@ class Spider(Spider):  # 元类 默认的元类 type
                     "vod_area": self.vod_area,
                     # "vod_area":"",
                     "vod_remarks": remark,
-                    "vod_actor": '',
+                   
+                    'vod_tags':'mv',
 
                     "vod_director": dire,
                     "vod_content": desc + '\nup主:' + dire
@@ -876,7 +929,7 @@ class Spider(Spider):  # 元类 默认的元类 type
                 "User-Agent": 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36'
             }
             result["contentType"] = 'video/x-flv'
-            self.box_video_type = '影视'
+            
 
         elif self.box_video_type == '直播':
 
@@ -915,8 +968,8 @@ class Spider(Spider):  # 元类 默认的元类 type
                 }
 
 
-                self.box_video_type = '直播'
-                if ids[0]=="h5":
+                
+                if "h5" in ids[0]:
                     result["contentType"] = ''
                 else:
                     result["contentType"] = 'video/x-flv'
@@ -956,7 +1009,7 @@ class Spider(Spider):  # 元类 默认的元类 type
                 "User-Agent": 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36'
             }
             result["contentType"] = 'video/x-flv'
-            self.box_video_type = '其他'
+            
         return result
 
     config = {
@@ -1158,10 +1211,7 @@ class Spider(Spider):  # 元类 默认的元类 type
                 "name": "直播分区",
                 "value": [
 
-                 {
-                        "n": "全部分区",
-                        "v": "0"
-                    },
+                 
 
                     {
                         "n": "娱乐",
@@ -1199,6 +1249,9 @@ class Spider(Spider):  # 元类 默认的元类 type
                 ]
             },
                 ],
+                
+                
+                "生活直播":[{"key":"area_id","name":"小分区","value":[{"n":"生活分享","v":"646"},{"n":"运动","v":"628"},{"n":"搞笑","v":"624"},{"n":"手工绘画","v":"627"},{"n":"萌宠","v":"369"},{"n":"美食","v":"367"},{"n":"时尚","v":"378"},{"n":"影音馆","v":"33"}] }],
 
 
          "音声": [{
@@ -1456,7 +1509,7 @@ class Spider(Spider):  # 元类 默认的元类 type
 
 if __name__ == '__main__':
     a=Spider()
-
+    print(time_stamp)
 
     print(a.categoryContent('5','1',filter={},extend='1'))
 
@@ -1468,7 +1521,7 @@ if __name__ == '__main__':
     print(a.detailContent(['43000&movie']))
 
 
-    print(a.playerContent('flag', 'flv线路$web_43000#h5线路$h5_43000', 'vipFlags'))
+    print(a.get_toview(1))
 
 
 
