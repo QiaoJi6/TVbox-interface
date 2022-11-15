@@ -47,8 +47,8 @@ class Spider(Spider):  # 元类 默认的元类 type
 	cookies = ''
 	def getCookie(self):
 		#在cookies_str中填入会员或大会员cookie，以获得更好的体验
-		cookies_str = "_uuid=5E4B2B98-1014A-84D8-FA33-EC210C5BEC10DA82367infoc; buvid3=E9D0A426-85E9-E6C7-C75E-206A3E1BEB4D81910infoc; b_nut=1666168082; buvid4=4FC87B9C-3540-2275-688C-8612D3EA719B81910- 022101916-ZLe640jXRAMHySuaCe9aUw==; rpdid=|(k|u)YYm)uY0J'uYYYuY)uuu; i-wanna-go-back=-1; fingerprint=9c214a6da0197a48e576ccf22e9f0ac7; buvid_fp_plain=undefined; nostalgia_conf=-1;  DedeUserID=3493076028885079; DedeUserID__ckMd5=60a8757a1f4d6ae9; buvid_fp=9c214a6da0197a48e576ccf22e9f0ac7; CURRENT_QUALITY=80; b_ut=5; PVID=2; bp_video_offset_3493076028885079=undefined;  bsource=search_google; SESSDATA=42b8ada6,1683277266,4bd05*b2; bili_jct=2dbe39aea02b41324395630a24d4775f; sid=89gnel66; innersign=0; b_lsid=9EF63922_1844D55A286; CURRENT_FNVAL=4048"
-		cookies_dic = dict([co.strip().split('=',1) for co in cookies_str.split(';')])
+		cookies_str = "innersign=0; buvid3=606BE156-AE37-AEA8-7052-9DA0B21766E776404infoc; b_nut=1663302976; i-wanna-go-back=-1; b_ut=7; b_lsid=4106252F6_18344933A90; _uuid=586AAEB7-6B88-A691-F7AC-95C27E57F53C43036infoc; buvid4=B6FF1449-4361-1C76-DEFC-4AFCA1777B7E78304-022091612-PdJr0jKE6N5TamfAEX9uACD1RXvklspbNdlcIQEFLMu0d9wS3G3sdA%3D%3D; buvid_fp=2a9b54d5e06aa54293dc7544e000552d"
+		cookies_dic = dict([co.strip().split('=') for co in cookies_str.split(';')])
 		rsp = session()
 		cookies_jar = utils.cookiejar_from_dict(cookies_dic)
 		rsp.cookies = cookies_jar
@@ -133,24 +133,36 @@ class Spider(Spider):  # 元类 默认的元类 type
 		}
 		return result
 	def searchContent(self,key,quick):
-		url = 'https://api.bilibili.com/x/web-interface/search/type?search_type=media_bangumi&keyword={0}'.format(key)  # 番剧搜索
+		vodList1 = []
+		vodList2 = []
+		videos = []
+		url1 = 'https://api.bilibili.com/x/web-interface/search/type?search_type=media_bangumi&keyword={0}'.format(key)  # 番剧搜索
 		if len(self.cookies) <= 0:
 			self.getCookie()
-		rsp = self.fetch(url, cookies=self.cookies)
-		content = rsp.text
-		jo = json.loads(content)
-		rs = jo['data']
-		if rs['numResults'] == 0:
-			url = 'https://api.bilibili.com/x/web-interface/search/type?search_type=media_ft&keyword={0}'.format(key)  # 影视搜索
-			rspRetry = self.fetch(url, cookies=self.cookies)
-			content = rspRetry.text
-		jo = json.loads(content)
-		videos = []
-		vodList = jo['data']['result']
+		rsp1 = self.fetch(url1, cookies=self.cookies)
+		content1 = rsp1.text
+		jo1 = json.loads(content1)
+		rs1 = jo1['data']
+		if rs1['numResults'] == 0:
+			vodList1 = []
+		else:
+			vodList1 = jo1['data']['result']
+
+		url2 = 'https://api.bilibili.com/x/web-interface/search/type?search_type=media_ft&keyword={0}'.format(key)  # 影视搜索
+		rsp2 = self.fetch(url2, cookies=self.cookies)
+		content2 = rsp2.text
+		jo2 = json.loads(content2)
+		rs2 = jo2['data']
+		if rs2['numResults'] == 0:
+			vodList2 = []
+		else:
+			vodList2 = jo2['data']['result']
+		vodList = vodList1 + vodList2
 		for vod in vodList:
 			aid = str(vod['season_id']).strip()
-			title = vod['title'].strip().replace("<em class=\"keyword\">", "").replace("</em>", "")
-			img = vod['eps'][0]['cover'].strip()
+			title = str(key) + vod['title'].strip().replace("<em class=\"keyword\">", "").replace("</em>", "")
+			img = vod['cover'].strip()
+			#img = vod['eps'][0]['cover'].strip()
 			remark = vod['index_show']
 			videos.append({
 				"vod_id": aid,
