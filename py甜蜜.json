@@ -32,13 +32,23 @@
         },
         {
             "key": "py_bilibili3",
-            "name": "B站3直播",
+            "name": "B站直播1",
             "type": 3,
             "api": "py_bilibili3",
             "searchable": 0,
             "quickSearch": 0,
             "filterable": 1,
             "ext": "https://kebedd69.github.io/TVbox-interface/py/py_bilibili3.py"
+        },
+        {
+            "key": "py_bilizb",
+            "name": "B站直播2",
+            "type": 3,
+            "api": "py_bilizb",
+            "searchable": 0,
+            "quickSearch": 0,
+            "filterable": 1,
+            "ext": "https://kebedd69.github.io/TVbox-interface/py/py_bilizb.py"
         },
         {
             "key": "py_3qu",
@@ -384,12 +394,24 @@
             "url": "Sequence"
         },
         {
-            "name": "风起",
+            "name": "风起0",
             "type": 1,
-            "url": "http://45.207.11.9:7728/api.php?url=",
-            "header": {
-                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\\/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Safari/537.36"
-            }
+            "url": "https://drpy.liucn.repl.co/parse/api/dyg.js?url="
+        },
+        {
+            "name": "风起1",
+            "type": 1,
+            "url": "https://m3u8.co/api/?key=HkxDBJ2n38eCRLmpYh&url="
+        },
+        {
+            "name": "风起2",
+            "type": 1,
+            "url": "https://m3u8.co/api/?key=TqMo2BRQF0WssvMjPe&url="
+        },
+        {
+            "name": "风起3",
+            "type": 1,
+            "url": "https://m3u8.co/api/?key=j12rWhKcmkWLyTyc6R&url="
         },
         {
             "name": "风起清河",
