@@ -394,6 +394,16 @@
             "url": "Sequence"
         },
         {
+            "name": "风起江湖",
+            "type": 1,
+            "url": "http://45.248.10.163:4433/json.php?wap=0&url="
+        },
+        {
+            "name": "风起洛阳",
+            "type": 1,
+            "url": "https://k.json.icu/home/api?type=ys&uid=12406929&key=adgouwyCGIRSTUV046&url="
+        },
+        {
             "name": "风起0",
             "type": 1,
             "url": "https://drpy.liucn.repl.co/parse/api/dyg.js?url="
