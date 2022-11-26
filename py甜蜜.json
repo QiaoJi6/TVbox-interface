@@ -790,52 +790,63 @@
     ],
     "rules": [
         {
-            "host": "www.sharenice.net",
+            "host": "www.6080dy1.com",
             "rule": [
-                "douyin.com",
-                "/play/"
-            ],
-            "filter": []
+                "m3u8.php",
+                ".m3u8"
+            ]
+        },
+        {
+            "host": "*",
+            "rule": [
+                "default.365yg.com"
+            ]
+        },
+        {
+            "host": "www.agemys.cc",
+            "rule": [
+                "cdn-tos",
+                "obj/tos-cn"
+            ]
+        },
+        {
+            "host": "zjmiao.com",
+            "rule": [
+                "play.videomiao.vip/API.php",
+                "time="
+            ]
         },
         {
             "host": "www.sharenice.net",
+            "rule": [
+                "http.*?/play.{0,3}\\?[^url]{2,8}=.*"
+            ]
+        },
+        {
+            "host": "www.sharenice.net",
+            "rule": [
+                "qianpailive.com",
+                "vid="
+            ]
+        },
+        {
+            "host": "*",
+            "rule": [
+                "douyin.com/aweme",
+                "video_id="
+            ]
+        },
+        {
+            "host": "*",
             "rule": [
                 "huoshan.com",
                 "/item/video/"
-            ],
-            "filter": []
-        },
-        {
-            "host": "www.sharenice.net",
-            "rule": [
-                "sovv.qianpailive.com",
-                "vid="
-            ],
-            "filter": []
-        },
-        {
-            "host": "*",
-            "rule": [
-                "ysting.ysxs8.vip"
-            ],
-            "filter": []
-        },
-        {
-            "host": "pdsapi.aliyundrive.com",
-            "rule": [
-                "/redirect"
             ]
         },
         {
             "host": "*",
             "rule": [
-                "http((?!http).){26,}?\\.(m3u8|mp4|flv|avi|mkv|wmv|mpg|mpeg|mov|ts|3gp|rm|rmvb|asf|m4a|mp3|wma)\\?.*"
-            ]
-        },
-        {
-            "host": "*",
-            "rule": [
-                "http((?!http).){26,}\\.(m3u8|mp4|flv|avi|mkv|wmv|mpg|mpeg|mov|ts|3gp|rm|rmvb|asf|m4a|mp3|wma)"
+                "http((?!http).){12,}?\\.(m3u8|mp4|flv|avi|mkv|rm|wmv|mpg|m4a)\\?.*|http((?!http).){12,}\\.(m3u8|mp4|flv|avi|mkv|rm|wmv|mpg|m4a)|http((?!http).)*?xg.php\\?id=|http((?!http).)*?/m3/(.*)\\.css"
             ]
         }
     ],
