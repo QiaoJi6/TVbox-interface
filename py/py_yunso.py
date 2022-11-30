@@ -37,16 +37,7 @@ class Spider(Spider):
 	}
 
 	def detailContent(self,array):
-		id = array[0]
-		ysurl = 'https://api.upyunso.com/{0}'.format(id.replace('.html', ''))
-		header = {
-			"User-Agent": "Mozilla/5.0 (Linux; Android 12; V2049A Build/SP1A.210812.003; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/103.0.5060.129 Mobile Safari/537.36",
-			"referer": "https://www.upyunso.com/{0}".format(id),
-			"origin": "https://www.upyunso.com/"
-		}
-		urlrsp = requests.get(url=ysurl, headers=header).text.encode('ISO-8859-1').decode('UTF-8')
-		url = ["{0}".format(json.loads(base64.b64decode(urlrsp))['result']['res_url'])]
-		return self.ali.detailContent(url)
+		return self.ali.detailContent(array)
 
 	def searchContent(self,key,quick):
 		url = "https://api.upyunso.com/search?keyword={0}&page=1&s_type=2".format(key)
