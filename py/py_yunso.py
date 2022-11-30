@@ -1,22 +1,20 @@
 #coding=utf-8
 #!/usr/bin/python
-import base64
-import json
 import sys
-
-import requests
-
-sys.path.append('..')
+sys.path.append('..') 
 from base.spider import Spider
+import requests
+import json
+import base64
 
 class Spider(Spider):
 	def getDependence(self):
 		return ['py_ali']
 	def getName(self):
-		return "py_up云搜"
+		return "py_yunso"
 	def init(self,extend):
 		self.ali = extend[0]
-		print("============py_pansou============")
+		print("============py_yunso============")
 		pass
 	def isVideoFormat(self,url):
 		pass
@@ -28,24 +26,27 @@ class Spider(Spider):
 	def homeVideoContent(self):
 		result = {}
 		return result
+
 	def categoryContent(self,tid,pg,filter,extend):
 		result = {}
 		return result
 
+	header = {
+		"User-Agent": "Mozilla/5.0 (Linux; Android 12; V2049A Build/SP1A.210812.003; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/103.0.5060.129 Mobile Safari/537.36",
+		"origin": "https://www.upyunso.com/"
+	}
+
 	def detailContent(self,array):
-		tid = array[0]
-		print(self.getName())
-
-		pattern = '(https:\\/\\/www.aliyundrive.com\\/s\\/[^\\\"]+)'
-		url = self.regStr(tid,pattern)
-		print('是这个码',url)
-
-		if len(url) > 0:
-			print('阿里')
-			return self.ali.detailContent(array)
-
-		
-
+		id = array[0]
+		ysurl = 'https://api.upyunso.com/{0}'.format(id.replace('.html', ''))
+		header = {
+			"User-Agent": "Mozilla/5.0 (Linux; Android 12; V2049A Build/SP1A.210812.003; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/103.0.5060.129 Mobile Safari/537.36",
+			"referer": "https://www.upyunso.com/{0}".format(id),
+			"origin": "https://www.upyunso.com/"
+		}
+		urlrsp = requests.get(url=ysurl, headers=header).text.encode('ISO-8859-1').decode('UTF-8')
+		url = ["{0}".format(json.loads(base64.b64decode(urlrsp))['result']['res_url'])]
+		return self.ali.detailContent(url)
 
 	def searchContent(self,key,quick):
 		url = "https://api.upyunso.com/search?keyword={0}&page=1&s_type=2".format(key)
@@ -53,23 +54,16 @@ class Spider(Spider):
 		vodList = json.loads(base64.b64decode(rsp.text))['result']['items']
 		videos = []
 		for vod in vodList:
+			vid =vod['page_url']
+			name = vod['title']
+			if 'aliyundrive.com' in vid:
+				videos.append({
+					"vod_id": vid,
+					"vod_name": name,
+					"vod_pic": "https://inews.gtimg.com/newsapp_bt/0/13263837859/1000",
+					"vod_remarks": vod['insert_time']
+				})
 
-			conList = vod['content']
-
-			for con in conList:
-				#print(con)
-				pattern = '(https:\\/\\/www.aliyundrive.com\\/s\\/[^\\\"]+)'
-				url = self.regStr(con['size'],pattern)
-
-
-				if len(url)>0:
-					vid = con['size']
-					videos.append({
-						"vod_id": vid,
-						"vod_name": con['title'],
-						"vod_pic": "https://inews.gtimg.com/newsapp_bt/0/13263837859/1000",
-						"vod_remarks": vod['insert_time']
-					})
 		result = {
 			'list':videos
 		}
@@ -86,10 +80,3 @@ class Spider(Spider):
 
 	def localProxy(self,param):
 		return [200, "video/MP2T", action, ""]
-
-
-if __name__ == '__main__':
-	a=Spider()
-	result=a.searchContent('后天','1')
-	print(result)
-	print(a.detailContent(['https://www.aliyundrive.com/s/LDwBLChmf4c/folder/6113390cc1df1f8f9c2e498997d308e5099243ae']))
