@@ -8,7 +8,7 @@
             "searchable": 1,
             "quickSearch": 1,
             "filterable": 1,
-            "ext": "https://kebedd69.github.io/TVbox-interface/py/py_kunyu77.py"
+            "ext": "./py/py_kunyu77.py"
         },
         {
             "key": "py_bilivd",
@@ -18,7 +18,7 @@
             "searchable": 1,
             "quickSearch": 1,
             "filterable": 1,
-            "ext": "https://kebedd69.github.io/TVbox-interface/py/py_bilivd.py"
+            "ext": "./py/py_bilivd.py"
         },
         {
             "key": "py_bilibili2",
@@ -28,7 +28,7 @@
             "searchable": 0,
             "quickSearch": 0,
             "filterable": 1,
-            "ext": "https://kebedd69.github.io/TVbox-interface/py/py_bilibili2.py"
+            "ext": "./py/py_bilibili2.py"
         },
         {
             "key": "py_bilibili3",
@@ -38,7 +38,7 @@
             "searchable": 0,
             "quickSearch": 0,
             "filterable": 1,
-            "ext": "https://kebedd69.github.io/TVbox-interface/py/py_bilibili3.py"
+            "ext": "./py/py_bilibili3.py"
         },
         {
             "key": "py_bilizb",
@@ -48,7 +48,7 @@
             "searchable": 0,
             "quickSearch": 0,
             "filterable": 1,
-            "ext": "https://kebedd69.github.io/TVbox-interface/py/py_bilizb.py"
+            "ext": "./py/py_bilizb.py"
         },
         {
             "key": "py_3qu",
@@ -58,7 +58,7 @@
             "searchable": 1,
             "quickSearch": 1,
             "filterable": 1,
-            "ext": "https://kebedd69.github.io/TVbox-interface/py/py_3qu.py"
+            "ext": "./py/py_3qu.py"
         },
         {
             "key": "py_cctv",
@@ -68,7 +68,17 @@
             "searchable": 0,
             "quickSearch": 0,
             "filterable": 1,
-            "ext": "https://kebedd69.github.io/TVbox-interface/py/py_cctv.py"
+            "ext": "./py/py_cctv.py"
+        },
+        {
+            "key": "py_xmly",
+            "name": "喜马拉雅FM",
+            "type": 3,
+            "api": "py_xmly",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1,
+            "ext": "./py/py_xmly.py"
         },
         {
             "key": "py_jrskbs",
@@ -78,7 +88,7 @@
             "searchable": 0,
             "quickSearch": 0,
             "filterable": 1,
-            "ext": "https://kebedd69.github.io/TVbox-interface/py/py_jrskbs.py"
+            "ext": "./py/py_jrskbs.py"
         },
         {
             "key": "py_yytv",
@@ -88,7 +98,7 @@
             "searchable": 0,
             "quickSearch": 0,
             "filterable": 1,
-            "ext": "https://kebedd69.github.io/TVbox-interface/py/py_yytv.py"
+            "ext": "./py/py_yytv.py"
         },
         {
             "key": "py_qie",
@@ -98,7 +108,7 @@
             "searchable": 0,
             "quickSearch": 0,
             "filterable": 1,
-            "ext": "https://kebedd69.github.io/TVbox-interface/py/py_qie.py"
+            "ext": "./py/py_qie.py"
         },
         {
             "key": "py_czspp",
@@ -108,7 +118,7 @@
             "searchable": 1,
             "quickSearch": 1,
             "filterable": 1,
-            "ext": "https://kebedd69.github.io/TVbox-interface/py/py_czspp.py"
+            "ext": "./py/py_czspp.py"
         },
         {
             "key": "py_ikan",
@@ -118,7 +128,7 @@
             "searchable": 1,
             "quickSearch": 1,
             "filterable": 1,
-            "ext": "https://kebedd69.github.io/TVbox-interface/py/py_ikan.py"
+            "ext": "./py/py_ikan.py"
         },
         {
             "key": "py_libvio",
@@ -128,7 +138,7 @@
             "searchable": 1,
             "quickSearch": 1,
             "filterable": 1,
-            "ext": "https://kebedd69.github.io/TVbox-interface/py/py_libvio.py"
+            "ext": "./py/py_libvio.py"
         },
         {
             "key": "py_cyys",
@@ -138,7 +148,7 @@
             "searchable": 1,
             "quickSearch": 1,
             "filterable": 1,
-            "ext": "https://kebedd69.github.io/TVbox-interface/py/py_cyys.py"
+            "ext": "./py/py_cyys.py"
         },
         {
             "key": "py_lezhutv",
@@ -148,7 +158,7 @@
             "searchable": 1,
             "quickSearch": 1,
             "filterable": 1,
-            "ext": "https://kebedd69.github.io/TVbox-interface/py/py_lezhutv.py"
+            "ext": "./py/py_lezhutv.py"
         },
         {
             "key": "py_zxzj",
@@ -158,7 +168,7 @@
             "searchable": 1,
             "quickSearch": 1,
             "filterable": 1,
-            "ext": "https://kebedd69.github.io/TVbox-interface/py/py_zxzj.py"
+            "ext": "./py/py_zxzj.py"
         },
         {
             "key": "py_voflix",
@@ -168,7 +178,7 @@
             "searchable": 1,
             "quickSearch": 1,
             "filterable": 1,
-            "ext": "https://kebedd69.github.io/TVbox-interface/py/py_voflix.py"
+            "ext": "./py/py_voflix.py"
         },
         {
             "key": "py_bilimd",
@@ -178,7 +188,7 @@
             "searchable": 1,
             "quickSearch": 1,
             "filterable": 1,
-            "ext": "https://kebedd69.github.io/TVbox-interface/py/py_bilimd.py"
+            "ext": "./py/py_bilimd.py"
         },
         {
             "key": "py_gimytv",
@@ -188,7 +198,7 @@
             "searchable": 1,
             "quickSearch": 1,
             "filterable": 1,
-            "ext": "https://kebedd69.github.io/TVbox-interface/py/py_gimytv.py"
+            "ext": "./py/py_gimytv.py"
         },
         {
             "key": "py_genmov",
@@ -198,7 +208,7 @@
             "searchable": 1,
             "quickSearch": 1,
             "filterable": 1,
-            "ext": "https://kebedd69.github.io/TVbox-interface/py/py_genmov.py"
+            "ext": "./py/py_genmov.py"
         },
         {
             "key": "py_huya",
@@ -208,7 +218,7 @@
             "searchable": 0,
             "quickSearch": 0,
             "filterable": 1,
-            "ext": "https://kebedd69.github.io/TVbox-interface/py/py_huya.py"
+            "ext": "./py/py_huya.py"
         },
         {
             "key": "py_douyu",
@@ -218,7 +228,7 @@
             "searchable": 0,
             "quickSearch": 0,
             "filterable": 1,
-            "ext": "https://kebedd69.github.io/TVbox-interface/py/py_douyu.py"
+            "ext": "./py/py_douyu.py"
         },
         {
             "key": "py_yixi",
@@ -228,7 +238,7 @@
             "searchable": 0,
             "quickSearch": 0,
             "filterable": 1,
-            "ext": "https://kebedd69.github.io/TVbox-interface/py/py_yixi.py"
+            "ext": "./py/py_yixi.py"
         },
         {
             "key": "py_freezb",
@@ -238,7 +248,7 @@
             "searchable": 0,
             "quickSearch": 0,
             "filterable": 1,
-            "ext": "https://kebedd69.github.io/TVbox-interface/py/py_freezb.py"
+            "ext": "./py/py_freezb.py"
         },
         {
             "key": "py_cokemv",
@@ -248,7 +258,7 @@
             "searchable": 1,
             "quickSearch": 1,
             "filterable": 1,
-            "ext": "https://kebedd69.github.io/TVbox-interface/py/py_cokemv.py"
+            "ext": "./py/py_cokemv.py"
         },
         {
             "key": "py_xmaomi",
@@ -258,7 +268,7 @@
             "searchable": 1,
             "quickSearch": 1,
             "filterable": 1,
-            "ext": "https://kebedd69.github.io/TVbox-interface/py/py_xmaomi.py"
+            "ext": "./py/py_xmaomi.py"
         },
         {
             "key": "py_if101",
@@ -268,7 +278,7 @@
             "searchable": 1,
             "quickSearch": 1,
             "filterable": 1,
-            "ext": "https://kebedd69.github.io/TVbox-interface/py/py_if101.py"
+            "ext": "./py/py_if101.py"
         },
         {
             "key": "py_gitcafe",
@@ -278,7 +288,7 @@
             "searchable": 1,
             "quickSearch": 1,
             "filterable": 0,
-            "ext": "https://kebedd69.github.io/TVbox-interface/py/py_gitcafe.py"
+            "ext": "./py/py_gitcafe.py"
         },
         {
             "key": "py_yiso",
@@ -288,7 +298,7 @@
             "searchable": 1,
             "quickSearch": 1,
             "filterable": 0,
-            "ext": "https://kebedd69.github.io/TVbox-interface/py/py_yiso.py"
+            "ext": "./py/py_yiso.py"
         },
         {
             "key": "py_zhaozy",
@@ -298,7 +308,7 @@
             "searchable": 1,
             "quickSearch": 1,
             "filterable": 0,
-            "ext": "https://kebedd69.github.io/TVbox-interface/py/py_zhaozy.py"
+            "ext": "./py/py_zhaozy.py"
         },
         {
             "key": "py_alist",
@@ -308,7 +318,7 @@
             "searchable": 1,
             "quickSearch": 1,
             "filterable": 0,
-            "ext": "https://kebedd69.github.io/TVbox-interface/py/py_alist.py"
+            "ext": "./py/py_alist.py"
         },
         {
             "key": "py_yunso",
@@ -318,7 +328,7 @@
             "searchable": 1,
             "quickSearch": 1,
             "filterable": 0,
-            "ext": "https://kebedd69.github.io/TVbox-interface/py/py_yunso.py"
+            "ext": "./py/py_yunso.py"
         },
         {
             "key": "py_pansou",
@@ -328,7 +338,7 @@
             "searchable": 1,
             "quickSearch": 1,
             "filterable": 0,
-            "ext": "https://kebedd69.github.io/TVbox-interface/py/py_pansou.py"
+            "ext": "./py/py_pansou.py"
         },
         {
             "key": "py_mac",
@@ -1085,5 +1095,5 @@
         }
     ],
     "wallpaper": "http://www.kf666888.cn/api/tvbox/img",
-    "spider": "https://kebedd69.github.io/TVbox-interface/jar/甜蜜11031.jar;md5;ca07e741640debc3777bb9a227cfb884"
+    "spider": "./jar/甜蜜11031.jar;md5;ca07e741640debc3777bb9a227cfb884"
 }
